@@ -1,0 +1,60 @@
+% Tipo di documento
+\documentclass[10pt, a4paper, twoside]{article}
+    \usepackage[english]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+%%%%% Pacchetti
+\usepackage{imports/packages}		% Pacchetti aggiuntivi di vario tipo (senza tikz)
+\usepackage{imports/layout}			% Contiene i pacchetti e le impostazioni per il layout
+\usepackage{imports/tikz}				% Ambiente tikzpicture
+%\usepackage{imports/definitions}		% Definizioni di colori, variabili globali ecc.
+\usepackage{imports/styles}		% Impostazioni TOC, bibliografia e indice analitico + environments vari per il contenuto del documento
+\usepackage{imports/references}		% Collegamenti ipertestuali e indice analitico
+\usepackage{imports/custom}			% Comandi vari
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{Titolo}
+\author{Paolo Villani\\paolo.villani00@outlook.com}
+\date{\today}
+\maketitle
+\begin{abstractBox}[colbacktitle=black]{Introduction}{
+Ciao
+}
+\end{abstractBox}
+
+\vspace{.5cm}
+\pagestyle{fancy}
+\pagestyle{fancyfront}
+
+\pagestyle{fancymain}
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{sections/prova1.tex}
+%\input{sections/prova1.tex}
+%\input{sections/Sezione3.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\pagestyle{fancyapp}
+\appendix
+	\section{Appendix 1}	\cite{Winner:2006} \blindduck[maths]
+
+
+\newpage
+\pagestyle{fancybib}
+\section*{Bibliography}
+\bibliographystyle{amsalpha}
+\renewcommand\refname{}
+
+\bibliography{references}
+\addcontentsline{toc}{section}{Bibliography}
+
+\end{document}
+

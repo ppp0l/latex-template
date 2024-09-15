@@ -1,0 +1,164 @@
+\usepackage{geometry}				% Con l'opzione 'showframe' si controlla l'interazione layout/contenuto
+\usepackage{fancyhdr}                       			% Layout di pagina
+\usepackage{titletoc}							% Typesetting di TOC, LOF, LOT
+\usepackage{shorttoc}						% Typesetting del TOC
+\usepackage{appendix}                       			% Typesetting appendici
+
+\usepackage{soul}							% Typesetting del testo
+
+\geometry{
+	%%%%% Pagina
+	top=2.5cm,
+	bottom=3cm,
+	marginparsep=.2cm,
+	marginparwidth=2cm,
+	voffset=0pt,
+	hoffset=0pt,
+	%%%%% Margini
+	left=72pt,
+	right=72pt,
+	%%%%% Contenuto
+	textwidth=13cm,
+	textheight=180mm,
+	headheight=21pt,
+	%%%%% Header e footer
+	headsep=10pt,
+	footskip=20pt,
+	footnotesep=10pt,
+}
+\newcommand\smallnote{\@setfontsize\smallnote{5.6}{6.72}}
+\newcommand\FontSubsubsec{\@setfontsize\FontSubsubsec{9}{10.8}}
+\newcommand\FontSubsec{\@setfontsize\FontSubsec{11}{13.2}}
+\newcommand\FontSec{\@setfontsize\FontSection{13}{15.6}}
+
+%%%%%%%%%% Pagina pari bianca alla fine di ogni capitolo	
+\makeatletter
+	\def\cleardoublepage{\clearpage \ifodd\c@page\else
+  	\vspace*{\fill}
+  	\pagestyle{plain}
+ 	\newpage
+	\pagestyle{fancymain}
+	\fi}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%															TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}
+\addtocontents{toc}{\protect\setstretch{1.25}}
+%Nascondere dall'indice
+\newcounter{Counter2}
+\newcommand{\hidefromtoc}{\setcounter{Counter2}{\value{tocdepth}}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{-10}}}
+\newcommand{\unhidefromtoc}{\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}}
+\contentsmargin{0cm}
+	% Sezioni
+\titlecontents{section}[.5 pc]
+{\addvspace{0pt}}
+{\normalsize\contentslabel[\bfseries\thecontentslabel]{1pc}\small}
+{}
+{\dotfill \thecontentspage}
+[]
+	% Sottosezioni
+\titlecontents{subsection}[1.25 pc]
+{\addvspace{1pt}}
+{\normalsize\contentslabel[\bfseries \thecontentslabel]{2.5pc} \small\hspace{-.5cm}}
+{}
+{\dotfill \thecontentspage}
+[]
+	% Sotto-sottosezioni
+\titlecontents{subsubsection}[2pc]
+{\addvspace{1pt}}
+{\normalsize\contentslabel[\bfseries\thecontentslabel]{4pc}\small\hspace{-.5cm}}
+{}
+{\dotfill \thecontentspage}
+[]
+	% TOC generico
+\usepackage{multicol} %Per mettere l'indice su due colonne
+\setlength\columnsep{40pt}
+\makeatletter
+\renewcommand{\tableofcontents}{
+{
+\begin{multicols}{2}
+		\fontsize{10.5}{20}\selectfont 
+	\@starttoc{toc}
+\end{multicols}
+}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%				FORMATO TITOLI PARTI, CAPITOLI, SEZIONI, ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sf,sl,outermarks]{titlesec}		% Typesetting capitoli/sezioni/...
+	% Sezioni
+\titleformat{\section}{\normalfont\sffamily\FontSec\bfseries}{\thesection}{.5em}{\ul}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{.5\baselineskip}
+	% Sottosezioni
+\titleformat{\subsection}{\normalfont\sffamily\FontSubsec\bfseries}{\thesubsection}{.5em}{\ul}
+\titlespacing*{\subsection}{0pt}{1\baselineskip}{.5\baselineskip}
+	% Sottosottosezioni
+\titleformat{\subsubsection}{\normalfont\sffamily\FontSubsubsec\bfseries}{}{.5em}{\ul}
+\titlespacing*{\subsubsection}{0pt}{1\baselineskip}{.5\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%															STILE DI PAGINA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Frontmatter style
+\fancypagestyle{fancyfront}{
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.25pt}
+	\pagenumbering{arabic}
+	\fancyhead[L,R]{}
+	\fancyfoot[C]{\small\thepage}
+	\fancyfoot[LO,RE]{}
+	\fancyfoot[LE,RO]{}}
+
+\newtcolorbox{abstractBox}[2][]{
+	enhanced,
+    before skip=1mm,
+    after skip=1mm,
+	colback=black!3.5,
+    colframe=white,
+    boxrule=0mm,
+    attach boxed title to top left={xshift=-.25cm, yshift*=5mm-\tcboxedtitleheight},
+	varwidth boxed title*=.8cm,
+	boxed title style={frame code={}, interior engine=empty},
+	fonttitle=\bfseries,
+	title={{\color{black} #2}},#1}
+%%%%%%%% Mainmatter style
+\fancypagestyle{fancymain}{
+\renewcommand{\headrulewidth}{0.25pt}
+	\fancyhead[LE, RO]{\small\parbox{.45\textwidth}{\checkoddpage
+\ifoddpage \raggedleft \else \raggedright \fi \bfseries\nouppercase{\leftmark}}\vspace{.065cm}}
+	\fancyhead[LO, RE]{\small\parbox{.45\textwidth}{\checkoddpage
+\ifoddpage \raggedright \else \raggedleft \fi \nouppercase{\rightmark}}\vspace{.065cm}}
+	\fancyfoot[LE,RO]{\small\thepage}
+	\fancyfoot[C]{}
+	\fancyfoot[LO,RE]{\small paolo.villani00@outlook.com}}
+%%%%%%%% Appendice style
+\fancypagestyle{fancyapp}{
+\renewcommand{\headrulewidth}{0.25pt}
+	\fancyhead[LE, RO]{\small\parbox{.45\textwidth}{\checkoddpage
+\ifoddpage \raggedleft \else \raggedright \fi \bfseries\nouppercase{\leftmark}}\vspace{.065cm}}
+	\fancyhead[LO, RE]{\small\parbox{.45\textwidth}{\checkoddpage
+\ifoddpage \raggedright \else \raggedleft \fi \nouppercase{\rightmark}}\vspace{.065cm}}
+	\fancyfoot[LE,RO]{\small\thepage}
+	\fancyfoot[C]{}
+	\fancyfoot[LO,RE]{\small paolo.villani00@outlook.com}}
+%%%%%%%%% Bibliografia style
+\fancypagestyle{fancybib}{
+	\renewcommand{\headrulewidth}{0.25pt}
+	\renewcommand{\footrulewidth}{0.25pt}
+	\fancyfoot[LE,RO]{}
+	\fancyhead[LO,RE]{\bf\small Bibliography}
+	\fancyhead[RO,LE]{{ } }
+}
+%%%%%%%%%% Indice analitico style
+\fancypagestyle{fancyindex}{
+	\renewcommand{\headrulewidth}{0.25pt}
+	\renewcommand{\footrulewidth}{0.25pt}
+	\fancyhead[L,R]{}
+	\fancyfoot[L,R]{}
+	\fancyfoot[C]{\small\thepage}
+	\fancyfoot[LE,RO]{}
+	\fancyhead[LO,RE]{\bf\small Index}}

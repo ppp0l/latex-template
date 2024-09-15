@@ -1,0 +1,28 @@
+% Tipo di documento
+\documentclass[10pt, a4paper, twoside]{article}
+%    \usepackage[english]{babel}
+%    \usepackage[utf8]{inputenc}
+  %  \usepackage[T1]{fontenc}
+%%%%% Pacchetti
+\usepackage{imports/packages}		% Pacchetti aggiuntivi di vario tipo (senza tikz)
+\usepackage{imports/layout}			% Contiene i pacchetti e le impostazioni per il layout
+%\usepackage{imports/tikz}				% Ambiente tikzpicture
+%\usepackage{imports/definitions}		% Definizioni di colori, variabili globali ecc.
+%\usepackage{imports/styles}		% Impostazioni TOC, bibliografia e indice analitico + environments vari per il contenuto del documento
+\usepackage{imports/references}		% Collegamenti ipertestuali e indice analitico
+\usepackage{imports/custom}			% Comandi vari
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\vspace{.5cm}
+\pagestyle{fancy}
+\pagestyle{fancyfront}
+
+\pagestyle{fancymain}
+\tableofcontents
+\input{sections/prova1.tex}
+
+\newpage
+\bibliography{references}
+\end{document}
