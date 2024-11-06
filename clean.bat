@@ -9,6 +9,11 @@ set Arr[4]=blg
 set Arr[5]=idx
 set Arr[6]=synctex.gz
 set Arr[7]=pdf
+set Arr[8]=fdb_latexmk
+set Arr[9]=fls
+set Arr[10]=ilg
+set Arr[11]=ind
+
 
 set "x=0"
 

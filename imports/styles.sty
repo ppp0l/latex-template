@@ -36,45 +36,45 @@
 %%%%%%%%%%						Ambienti matematici
 \usepackage{thmtools}
 	%%%%%%%%%% 			Stile Teorema, Proposizione, Lemma, Corollario, Definizione
-\declaretheoremstyle[spaceabove=8pt,
-					spacebelow=8pt,
-					headpunct={},
-					postheadspace=.5cm,
-					within=section,]{SettingTheorem}
-			%%%%%%%%%% Teorema
-			\declaretheorem[name=Teorema, style=SettingTheorem]{The}
-			%%%%%%%%%% Proposizione
-			\declaretheorem[name=Proposizione, style=SettingTheorem, numberlike=The]{Pro}
-			%%%%%%%%%% Lemma
-			\declaretheorem[name=Lemma, style=SettingTheorem, numberlike=The]{Le}
-			%%%%%%%%%% Corollario
-			\declaretheorem[name=Corollario, style=SettingTheorem, numberlike=The]{Co}
-			%%%%%%%%%% Definizione
-			\declaretheorem[name=Definizione, style=SettingTheorem, numberlike=The]{De}
-
-	%%%%%%%%%			Stile Dimostrazione
-\declaretheoremstyle[spaceabove=8pt,
-					spacebelow=8pt,
-					headfont=\normalfont\bfseries,
-					bodyfont=\normalfont,
-					postheadspace=.5cm,
-					qed=$\square$,
-					headpunct={}]{SettingProof}
-			%%%%%%%%%% Dimostrazione
-			\declaretheorem[name=Dimostrazione, style=SettingProof, unnumbered]{Proof}
-			%%%%%%%%%% Stile Esempio, Osservazione
-\declaretheoremstyle[within=section, headpunct={}, mdframed={innertopmargin=1pt,
-					innerbottommargin=1pt,
-					innerleftmargin=.4cm,
-					innerrightmargin=.4cm,
-					roundcorner=25pt,
-					backgroundcolor=black!4,
-					linecolor=white,
-					fontcolor=black}]{SettingExa}
-			%%%%%%%%%% Esempio
-			\declaretheorem[name=Esempio, style=SettingExa, numberlike=The]{Exa}
-			%%%%%%%%%% Osservazione
-			\declaretheorem[name=Osservazione, style=SettingExa, numberlike=The]{Oss}
+%\declaretheoremstyle[spaceabove=8pt,
+%				spacebelow=8pt,
+%				headpunct={},
+%				postheadspace=.5cm,
+%				within=section,]{SettingTheorem}
+%%%%%%%%%%% Teorema
+%\declaretheorem[name=Theorem, style=SettingTheorem]{thm}
+%%%%%%%%%%% Proposizione
+%\declaretheorem[name=Proposition, style=SettingTheorem, numberlike=thm]{prp}
+%%%%%%%%%%% Lemma
+%\declaretheorem[name=Lemma, style=SettingTheorem, numberlike=thm]{lem}
+%%%%%%%%%%% Corollario
+%\declaretheorem[name=Corollary, style=SettingTheorem, numberlike=thm]{cor}
+%%%%%%%%%%% Definizione
+%\declaretheorem[name=Definition, style=SettingTheorem, numberlike=thm]{dfn}
+%
+%	%%%%%%%%%			Stile Dimostrazione
+%\declaretheoremstyle[spaceabove=8pt,
+%					spacebelow=8pt,
+%					headfont=\normalfont\bfseries,
+%					bodyfont=\normalfont,
+%					postheadspace=.5cm,
+%					qed=$\square$,
+%					headpunct={}]{SettingProof}
+%			%%%%%%%%%% Dimostrazione
+%			\declaretheorem[name=Proof, style=SettingProof, unnumbered]{prf}
+%			%%%%%%%%%% Stile Esempio, Osservazione
+%\declaretheoremstyle[within=section, headpunct={}, mdframed={innertopmargin=1pt,
+%					innerbottommargin=1pt,
+%					innerleftmargin=.4cm,
+%					innerrightmargin=.4cm,
+%					roundcorner=25pt,
+%					backgroundcolor=black!4,
+%					linecolor=white,
+%					fontcolor=black}]{SettingExa}
+%			%%%%%%%%%% Esempio
+%			\declaretheorem[name=Example, style=SettingExa, numberlike=thm]{ex}
+%			%%%%%%%%%% Osservazione
+%			\declaretheorem[name=Remark, style=SettingExa, unnumbered]{obs}
 			
 %%%%%%%%%%						Box			
 \declaretheoremstyle[headpunct={}, mdframed={innertopmargin=15pt, innerbottommargin=5pt, innerleftmargin=.2cm, innerrightmargin=.2cm, roundcorner=50pt, backgroundcolor=black!5, linecolor=white, fontcolor=black, skipabove = -5pt, skipbelow=-5pt}]{SettingBox}
